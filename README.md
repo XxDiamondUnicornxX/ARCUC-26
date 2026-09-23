@@ -34,7 +34,7 @@ python3 -m http.server 8000
 
 Search the HTML for `TODO` to find placeholders:
 
-- **Sign-up form link and club email**: the Join section of `index.html`, plus the footer on every page
+- **Blueprint club page link**: the Join section of `index.html` (it currently points to the Blueprint homepage)
 - **Instagram link**: the footer on every page
 - **Board members**: names, roles, class years and headshots in `board.html` (instructions are in a comment at the top of the grid)
 - **Mentee and mentor form links**: `mentoring.html`
