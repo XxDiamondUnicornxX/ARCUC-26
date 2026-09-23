@@ -42,6 +42,7 @@ body {
 img { max-width: 100%; display: block; }
 
 a { color: var(--red); }
+a[href^="mailto:"] { overflow-wrap: anywhere; }
 a:hover { color: var(--red-dark); }
 
 h1, h2, h3, h4 {
@@ -247,6 +248,7 @@ p { margin: 0 0 1em; }
   align-items: center;
 }
 .split.reverse > :first-child { order: 2; }
+.split > * { min-width: 0; }
 
 @media (max-width: 820px) {
   .split { grid-template-columns: 1fr; }
@@ -262,55 +264,21 @@ p { margin: 0 0 1em; }
   object-fit: cover;
 }
 
-/* ---------- Story timeline ---------- */
+/* ---------- Our story (staggered two-column, as on the original site) ---------- */
 
-.timeline {
-  position: relative;
-  display: grid;
-  gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+.story {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--stone);
-  transform: translateX(-50%);
-}
-.timeline-item {
-  position: relative;
-  width: calc(50% - 2rem);
-  background: var(--white);
-  color: var(--ink);
-  padding: 1.6rem 1.8rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-.timeline-item:nth-child(even) { margin-left: auto; }
-.timeline-item::after {
-  content: "";
-  position: absolute;
-  top: 1.9rem;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--red);
-  border: 3px solid var(--white);
-  box-shadow: 0 0 0 2px var(--stone);
-}
-.timeline-item:nth-child(odd)::after { right: calc(-2rem - 7px); }
-.timeline-item:nth-child(even)::after { left: calc(-2rem - 7px); }
-.timeline-item h3 { color: var(--maroon-dark); }
-.timeline-item p { margin: 0; color: var(--muted); }
+.story-item { width: 48%; }
+.story-item:nth-child(even) { margin-left: auto; }
+.story-item h3 { color: var(--white); font-size: 1.6rem; margin-bottom: 0.7rem; }
+.story-item p { color: var(--cream); margin: 0; font-size: 1.05rem; line-height: 1.75; }
 
 @media (max-width: 720px) {
-  .timeline::before { left: 8px; }
-  .timeline-item { width: auto; margin-left: 2rem !important; }
-  .timeline-item::after { left: calc(-2rem - 1px) !important; right: auto !important; }
+  .story-item { width: auto; }
+  .story-item:nth-child(even) { margin-left: 0; }
 }
 
 /* ---------- Cards ---------- */
@@ -545,7 +513,7 @@ p { margin: 0 0 1em; }
 .site-footer h4 { color: var(--white); font-size: 1.05rem; margin-bottom: 0.8rem; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
 .site-footer li { margin-bottom: 0.45rem; }
-.site-footer a { color: var(--cream); text-decoration: none; }
+.site-footer a { color: var(--cream); text-decoration: none; display: inline-block; padding: 0.2rem 0; }
 .site-footer a:hover { color: var(--white); text-decoration: underline; }
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
